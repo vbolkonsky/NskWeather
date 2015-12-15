@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.lehakorshun.nskweather.interfaces.RestBackendInterface;
+import com.example.lehakorshun.nskweather.model.Mmweather;
 import com.example.lehakorshun.nskweather.model.Town;
 
 import java.io.IOException;
@@ -111,10 +112,10 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         RestBackendInterface restBackendInterface = retrofit.create(RestBackendInterface.class);
-        Call<Town> call = restBackendInterface.listForecast();
-        call.enqueue(new Callback<Town>() {
+        Call<Mmweather> call = restBackendInterface.getWeather();
+        call.enqueue(new Callback<Mmweather>() {
             @Override
-            public void onResponse(Response<Town> response, Retrofit retrofit) {
+            public void onResponse(Response<Mmweather> response, Retrofit retrofit) {
                 progressDialog.dismiss();
             }
 
