@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 import com.example.lehakorshun.nskweather.interfaces.RestBackendInterface;
 import com.example.lehakorshun.nskweather.model.Mmweather;
+import com.example.lehakorshun.nskweather.model.Town;
 
 import retrofit.Call;
 import retrofit.Callback;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
     AppCompatActivity context;
+    Town town;
     private static final String BASE_URL = "http://informer.gismeteo.ru";
 
     @Override
@@ -107,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<Mmweather>() {
             @Override
             public void onResponse(Response<Mmweather> response, Retrofit retrofit) {
+                town = response.body().getTown();
                 progressDialog.dismiss();
             }
 

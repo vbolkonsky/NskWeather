@@ -15,4 +15,6 @@ public class Forecast {
     @Attribute(name = "year")
     private long year;
 
+
+
 }

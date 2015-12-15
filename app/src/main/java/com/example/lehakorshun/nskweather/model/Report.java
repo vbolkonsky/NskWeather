@@ -1,6 +1,5 @@
 package com.example.lehakorshun.nskweather.model;
 
-import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
@@ -8,6 +7,9 @@ import org.simpleframework.xml.Root;
 public class Report {
 
     @Element(name = "TOWN")
-    Town town;
+    private Town town;
 
+    public Town getTown() {
+        return town;
+    }
 }

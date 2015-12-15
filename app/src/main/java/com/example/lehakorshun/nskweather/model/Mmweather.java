@@ -7,6 +7,10 @@ import org.simpleframework.xml.Root;
 public class Mmweather {
 
     @Element(name = "REPORT")
-    Report report;
+    private Report report;
+
+    public Town getTown() {
+        return report.getTown();
+    }
 
 }

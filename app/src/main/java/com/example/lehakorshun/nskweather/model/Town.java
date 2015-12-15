@@ -1,7 +1,6 @@
 package com.example.lehakorshun.nskweather.model;
 
 import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
@@ -16,4 +15,8 @@ public class Town {
     @ElementList(name = "FORECAST", inline = true ,required = true)
     List<Forecast> forecast;
 
+
+    public List<Forecast> getForecast() {
+        return forecast;
+    }
 }
