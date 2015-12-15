@@ -16,15 +16,6 @@ import android.view.MenuItem;
 
 import com.example.lehakorshun.nskweather.interfaces.RestBackendInterface;
 import com.example.lehakorshun.nskweather.model.Mmweather;
-import com.example.lehakorshun.nskweather.model.Town;
-
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 
 import retrofit.Call;
 import retrofit.Callback;
