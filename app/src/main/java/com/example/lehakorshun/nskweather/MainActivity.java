@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.lehakorshun.nskweather.Modules.TownModule;
+import com.example.lehakorshun.nskweather.component.DaggerTownComponent;
 import com.example.lehakorshun.nskweather.component.TownComponent;
 import com.example.lehakorshun.nskweather.model.Town;
 
@@ -66,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadData() {
 
-        TownComponent townComponent = DaggerTownComponent.builder().vehicleModule(new TownModule()).build();
+        TownComponent townComponent = DaggerTownComponent.builder()
+                .townModule(new TownModule()).build();
 
         town = townComponent.provideTown();
 
