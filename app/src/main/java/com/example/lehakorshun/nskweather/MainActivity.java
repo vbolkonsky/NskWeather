@@ -1,6 +1,5 @@
 package com.example.lehakorshun.nskweather;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
