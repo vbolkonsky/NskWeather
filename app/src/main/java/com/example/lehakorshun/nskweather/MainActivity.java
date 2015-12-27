@@ -7,11 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.example.lehakorshun.nskweather.interfaces.RestBackendInterface;
+import com.example.lehakorshun.nskweather.model.Mmweather;
 import com.example.lehakorshun.nskweather.modules.RetrofitModule;
 import com.example.lehakorshun.nskweather.component.DaggerRetrofitComponent;
 import com.example.lehakorshun.nskweather.component.RetrofitComponent;
 import com.example.lehakorshun.nskweather.model.Town;
 
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
 import retrofit.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,6 +53,20 @@ public class MainActivity extends AppCompatActivity {
                 .retrofitModule(new RetrofitModule()).build();
 
         Retrofit retrofit = retrofitComponent.provideRetrofit();
+
+        RestBackendInterface restBackendInterface = retrofit.create(RestBackendInterface.class);
+        Call<Mmweather> call = restBackendInterface.getWeather();
+        call.enqueue(new Callback<Mmweather>() {
+            @Override
+            public void onResponse(Response<Mmweather> response, Retrofit retrofit) {
+                town = response.body().getTown();
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        });
 
     }
 }

@@ -1,4 +1,4 @@
-package com.example.lehakorshun.nskweather.Modules;
+package com.example.lehakorshun.nskweather.modules;
 
 import com.example.lehakorshun.nskweather.interfaces.RestBackendInterface;
 import com.example.lehakorshun.nskweather.model.Mmweather;
