@@ -15,7 +15,7 @@ public class RetrofitModule {
     @Provides
     public Retrofit provideTown() {
 
-        if (retrofit != null) {
+        if (retrofit == null) {
             retrofit = new  Retrofit.Builder()
                     .baseUrl(Constant.URL)
                     .addConverterFactory(SimpleXmlConverterFactory.create())
