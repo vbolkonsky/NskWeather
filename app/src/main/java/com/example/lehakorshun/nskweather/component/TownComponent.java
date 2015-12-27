@@ -1,7 +1,7 @@
 package com.example.lehakorshun.nskweather.component;
 
 
-import com.example.lehakorshun.nskweather.Modules.TownModule;
+import com.example.lehakorshun.nskweather.modules.TownModule;
 import com.example.lehakorshun.nskweather.model.Town;
 
 import dagger.Component;

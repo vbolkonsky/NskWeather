@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.example.lehakorshun.nskweather.Modules.RetrofitModule;
+import com.example.lehakorshun.nskweather.modules.RetrofitModule;
 import com.example.lehakorshun.nskweather.component.DaggerRetrofitComponent;
 import com.example.lehakorshun.nskweather.component.RetrofitComponent;
 import com.example.lehakorshun.nskweather.model.Town;

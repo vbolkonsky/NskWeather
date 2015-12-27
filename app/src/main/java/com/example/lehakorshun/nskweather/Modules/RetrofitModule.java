@@ -1,6 +1,6 @@
-package com.example.lehakorshun.nskweather.Modules;
+package com.example.lehakorshun.nskweather.modules;
 
-import com.example.lehakorshun.nskweather.Utils.Constant;
+import com.example.lehakorshun.nskweather.utils.Constant;
 
 import dagger.Module;
 import dagger.Provides;

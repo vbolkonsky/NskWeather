@@ -1,4 +1,4 @@
-package com.example.lehakorshun.nskweather.Utils;
+package com.example.lehakorshun.nskweather.utils;
 
 public interface Constant {
 

@@ -1,6 +1,6 @@
 package com.example.lehakorshun.nskweather.component;
 
-import com.example.lehakorshun.nskweather.Modules.RetrofitModule;
+import com.example.lehakorshun.nskweather.modules.RetrofitModule;
 
 import dagger.Component;
 import retrofit.Retrofit;
