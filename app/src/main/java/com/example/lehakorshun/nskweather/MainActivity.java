@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -20,6 +21,8 @@ import com.example.lehakorshun.nskweather.interfaces.RestBackendInterface;
 import com.example.lehakorshun.nskweather.model.Mmweather;
 import com.example.lehakorshun.nskweather.model.Town;
 import com.example.lehakorshun.nskweather.modules.MainModule;
+
+import java.io.IOException;
 
 import javax.inject.Inject;
 
@@ -37,17 +40,23 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     Callback<Mmweather> retroditCallback = new Callback<Mmweather>() {
         @Override
         public void onResponse(Response<Mmweather> response, Retrofit retrofit) {
-            town = response.body().getTown();
-
-            weatherAdapter.setItems(town.getForecasts());
-            recyclerView.setAdapter(weatherAdapter);
-
-            showItems();
+            if (response.body() != null) {
+                town = response.body().getTown();
+                weatherAdapter.setItems(town.getForecasts());
+                recyclerView.setAdapter(weatherAdapter);
+                showItems();
+            } else {
+                showEmptyText();
+                try {
+                    Log.d("111", "error: " + response.errorBody().string());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         @Override
         public void onFailure(Throwable t) {
-            showEmptyText();
 
         }
     };
