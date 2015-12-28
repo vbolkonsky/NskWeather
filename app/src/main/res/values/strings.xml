@@ -15,4 +15,7 @@
     <string name="Not_precipitation">Not precipitaion</string>
     <string name="Maybe_precipitation">Maybe precipitaion</string>
     <string name="Precipitation">Precipitaion</string>
+    <string name="Server_error">Server error</string>
+    <string name="Error">Error</string>
+    <string name="OK">OK</string>
 </resources>

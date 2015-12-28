@@ -124,7 +124,10 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     }
 
     private void showFailureDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this).setMessage("Server error").setTitle("Error").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setMessage(getString(R.string.Server_error))
+                .setTitle(getString(R.string.Error))
+                .setPositiveButton(getString(R.string.OK), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
