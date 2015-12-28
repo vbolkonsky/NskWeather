@@ -13,10 +13,9 @@ public class Town {
     String index;
 
     @ElementList(name = "FORECAST", inline = true ,required = true)
-    List<Forecast> forecast;
+    List<Forecast> forecasts;
 
-
-    public List<Forecast> getForecast() {
-        return forecast;
+    public List<Forecast> getForecasts() {
+        return forecasts;
     }
 }

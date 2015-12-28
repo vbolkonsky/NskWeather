@@ -12,7 +12,8 @@ import butterknife.ButterKnife;
 public class WeatherAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler, parent,
+                false);
         return new ViewHolder(v);
     }
 
