@@ -2,7 +2,9 @@ package com.example.lehakorshun.nskweather.model;
 
 import org.simpleframework.xml.Attribute;
 
-public class Phenomena {
+import java.io.Serializable;
+
+public class Phenomena implements Serializable{
 
     @Attribute(name = "cloudiness")
     private long cloudiness;

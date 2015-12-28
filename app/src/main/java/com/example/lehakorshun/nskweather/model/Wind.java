@@ -2,7 +2,9 @@ package com.example.lehakorshun.nskweather.model;
 
 import org.simpleframework.xml.Attribute;
 
-public class Wind {
+import java.io.Serializable;
+
+public class Wind implements Serializable{
 
     @Attribute(name = "max")
     private long max;

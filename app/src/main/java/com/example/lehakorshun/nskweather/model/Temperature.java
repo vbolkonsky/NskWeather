@@ -2,7 +2,9 @@ package com.example.lehakorshun.nskweather.model;
 
 import org.simpleframework.xml.Attribute;
 
-public class Temperature {
+import java.io.Serializable;
+
+public class Temperature implements Serializable{
 
     @Attribute(name = "max")
     private long max;

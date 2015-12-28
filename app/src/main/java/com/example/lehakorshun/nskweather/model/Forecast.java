@@ -4,8 +4,10 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
+import java.io.Serializable;
+
 @Root(name = "FORECAST", strict = false)
-public class Forecast {
+public class Forecast implements Serializable{
 
     @Attribute(name = "day")
     private int day;
