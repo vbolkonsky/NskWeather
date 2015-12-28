@@ -2,8 +2,6 @@ package com.example.lehakorshun.nskweather.modules;
 
 import android.app.Application;
 
-import com.example.lehakorshun.nskweather.App;
-
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -12,9 +10,9 @@ import dagger.Provides;
 @Module
 public class AppModule {
 
-    private App app;
+    private Application app;
 
-    public AppModule(App app) {
+    public AppModule(Application app) {
         this.app = app;
     }
 

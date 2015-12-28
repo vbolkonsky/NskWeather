@@ -15,7 +15,6 @@ import com.example.lehakorshun.nskweather.ItemDecoration.DividerItemDecoration;
 import com.example.lehakorshun.nskweather.adapter.WeatherAdapter;
 import com.example.lehakorshun.nskweather.component.AppComponent;
 import com.example.lehakorshun.nskweather.component.DaggerMainComponent;
-import com.example.lehakorshun.nskweather.component.MainComponent;
 import com.example.lehakorshun.nskweather.interfaces.RestBackendInterface;
 import com.example.lehakorshun.nskweather.model.Mmweather;
 import com.example.lehakorshun.nskweather.model.Town;
@@ -46,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     @Inject WeatherAdapter weatherAdapter;
 
     @Inject Retrofit retrofit;
-    //WeatherAdapter weatherAdapter = new WeatherAdapter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,11 +79,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
 
-        /*MainComponent mainComponent = DaggerMainComponent.builder()
-                .mainModule(new MainModule()).build();
-
-        Retrofit retrofit = mainComponent.provideRetrofit();*/
-
         RestBackendInterface restBackendInterface = retrofit.create(RestBackendInterface.class);
         Call<Mmweather> call = restBackendInterface.getWeather();
         call.enqueue(new Callback<Mmweather>() {
@@ -111,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     protected void setupComponent(AppComponent appComponent) {
         DaggerMainComponent.builder()
                 .appComponent(appComponent)
-                .mainModule(new MainModule())
+                .mainModule(new MainModule(this))
                 .build()
                 .inject(this);
     }
