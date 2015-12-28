@@ -1,7 +1,9 @@
 package com.example.lehakorshun.nskweather;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
                 showItems();
             } else {
                 showEmptyText();
+                showFailureDialog();
                 try {
                     Log.d("111", "error: " + response.errorBody().string());
                 } catch (IOException e) {
@@ -127,7 +130,13 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     }
 
     private void showFailureDialog() {
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(this).setMessage("Server error").setTitle("Error").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
     }
 
     @Override
