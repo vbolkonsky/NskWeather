@@ -48,9 +48,7 @@ public class ForecastActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forecast);
-        ButterKnife.bind(this);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        initActivity();
 
         Forecast forecast = (Forecast) getIntent().getSerializableExtra("forecast");
 
@@ -63,6 +61,12 @@ public class ForecastActivity extends AppCompatActivity {
         setForecastPrecipitation(forecast.getPhenomena().getPrecipitation());
         setForecastRelwet(forecast.getRelwet().getMax(), forecast.getRelwet().getMin());
         setForecastHeat(forecast.getHeat().getMax(), forecast.getHeat().getMin());
+    }
+
+    private void initActivity() {
+        ButterKnife.bind(this);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     private void setForecastImage(int cloudiness) {
