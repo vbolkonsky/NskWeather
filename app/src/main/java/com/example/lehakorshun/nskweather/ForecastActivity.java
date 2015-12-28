@@ -12,6 +12,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class ForecastActivity extends AppCompatActivity {
 
@@ -30,6 +31,7 @@ public class ForecastActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forecast);
+        ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
