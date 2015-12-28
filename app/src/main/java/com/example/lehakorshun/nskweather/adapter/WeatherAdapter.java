@@ -49,20 +49,12 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Forecast item = items.get(position);
 
-        holder.forecastImage.setImageResource(Helper.getImage(item.getPhenomena().getCloudiness()));
+        setForecastImage(holder, item.getPhenomena().getCloudiness());
+        setForecastDate(holder, item.getYear(), item.getMonth(), item.getDay(), item.getHour());
+        setForecastTemperature(holder, item.getTemperature().getMax(), item.getTemperature().getMin());
+        setForecastWind(holder, item.getWind().getMax(), item.getWind().getMin(),
+                item.getWind().getDirection());
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(item.getYear(), item.getMonth(), item.getDay(), item.getHour(), 0);
-        String date = dateFormat.format(calendar.getTime());
-        holder.forecastDate.setText(date);
-
-        String temperature = "Temperature: Max: " + item.getTemperature().getMax()
-                + " Min: " + item.getTemperature().getMin();
-        holder.forecastTemperature.setText(temperature);
-
-        String wind = "Wind: Max: " + item.getWind().getMax()
-                + " Min: " + item.getWind().getMin();
-        holder.forecastWind.setText(wind);
     }
 
     @Override
@@ -98,5 +90,29 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+    }
+
+    private void setForecastImage(ViewHolder holder, int cloudiness) {
+        holder.forecastImage.setImageResource(Helper.getImage(cloudiness));
+    }
+
+    private void setForecastDate(ViewHolder holder, int year, int month, int day, int hour) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day, hour, 0);
+        String date = dateFormat.format(calendar.getTime());
+        holder.forecastDate.setText(date);
+    }
+
+    private void setForecastTemperature(ViewHolder holder, int max, int min) {
+        String temperature = "Temperature: Max: " + max
+                + " Min: " + min;
+        holder.forecastTemperature.setText(temperature);
+    }
+
+    private void setForecastWind(ViewHolder holder, int max, int min, int direction) {
+        String wind = "Wind: Max: " + max
+                + " Min: " + min + " Direction: " +
+                Helper.getWindDirection(direction);
+        holder.forecastWind.setText(wind);
     }
 }
