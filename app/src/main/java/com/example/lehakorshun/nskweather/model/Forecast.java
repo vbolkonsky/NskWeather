@@ -8,37 +8,37 @@ import org.simpleframework.xml.Root;
 public class Forecast {
 
     @Attribute(name = "day")
-    private long day;
+    private int day;
 
     @Attribute(name = "month")
-    private long month;
+    private int month;
 
     @Attribute(name = "year")
-    private long year;
+    private int year;
 
     @Attribute(name = "hour")
-    private long hour;
+    private int hour;
 
     @Attribute(name = "weekday")
-    private long weekday;
+    private int weekday;
 
-    public long getDay() {
+    public int getDay() {
         return day;
     }
 
-    public long getMonth() {
+    public int getMonth() {
         return month;
     }
 
-    public long getYear() {
+    public int getYear() {
         return year;
     }
 
-    public long getHour() {
+    public int getHour() {
         return hour;
     }
 
-    public long getWeekday() {
+    public int getWeekday() {
         return weekday;
     }
 
