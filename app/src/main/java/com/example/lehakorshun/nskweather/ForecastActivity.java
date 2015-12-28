@@ -59,7 +59,7 @@ public class ForecastActivity extends AppCompatActivity {
         setForecastTemperature(forecast.getTemperature().getMax(), forecast.getTemperature().getMin());
         setForecastWind(forecast.getWind().getMax(), forecast.getWind().getMin(),
                 forecast.getWind().getDirection());
-
+        setForecastPressure(forecast.getPressure().getMax(), forecast.getPressure().getMin());
     }
 
     private void setForecastImage(int cloudiness) {
@@ -86,8 +86,10 @@ public class ForecastActivity extends AppCompatActivity {
         forecastWind.setText(wind);
     }
 
-    private void setForecastPressure() {
-
+    private void setForecastPressure(int max, int min) {
+        String pressure = "Pressure: Max: " + max
+                + " Min: " + min;
+        forecastPressure.setText(pressure);
     }
 
     private void setForecastPrecipitation() {
