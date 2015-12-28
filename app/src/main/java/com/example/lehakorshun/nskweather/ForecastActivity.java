@@ -32,6 +32,18 @@ public class ForecastActivity extends AppCompatActivity {
     @Bind(R.id.forecastWind)
     TextView forecastWind;
 
+    @Bind(R.id.forecastPressure)
+    TextView forecastPressure;
+
+    @Bind(R.id.forecastPrecipitation)
+    TextView forecastPrecipitation;
+
+    @Bind(R.id.forecastRelwet)
+    TextView forecastRelwet;
+
+    @Bind(R.id.forecastHeat)
+    TextView forecastHeat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,8 +67,17 @@ public class ForecastActivity extends AppCompatActivity {
         forecastTemperature.setText(temperature);
 
         String wind = "Wind: Max: " + forecast.getWind().getMax()
-                + " Min: " + forecast.getWind().getMin();
+                + " Min: " + forecast.getWind().getMin() + " Direction: " +
+                Helper.getWindDirection(forecast.getWind().getDirection());
         forecastWind.setText(wind);
+    }
+
+    private void setForecastImage() {
+
+    }
+
+    private void setForecastDate() {
+
     }
 
 }

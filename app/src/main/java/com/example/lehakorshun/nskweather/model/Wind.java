@@ -7,23 +7,23 @@ import java.io.Serializable;
 public class Wind implements Serializable{
 
     @Attribute(name = "max")
-    private long max;
+    private int max;
 
     @Attribute(name = "min")
-    private long min;
+    private int min;
 
     @Attribute(name = "direction")
-    private long direction;
+    private int direction;
 
-    public long getMax() {
+    public int getMax() {
         return max;
     }
 
-    public long getMin() {
+    public int getMin() {
         return min;
     }
 
-    public long getDirection() {
+    public int getDirection() {
         return direction;
     }
 }

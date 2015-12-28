@@ -52,4 +52,40 @@
         android:textSize="@dimen/list_item_font_size"
         />
 
+    <TextView
+        android:id="@+id/forecastPressure"
+        android:layout_below="@+id/forecastWind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondaryText"
+        android:textSize="@dimen/list_item_font_size"
+        />
+
+    <TextView
+        android:id="@+id/forecastPrecipitation"
+        android:layout_below="@+id/forecastPressure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondaryText"
+        android:textSize="@dimen/list_item_font_size"
+        />
+
+    <TextView
+        android:id="@+id/forecastRelwet"
+        android:layout_below="@+id/forecastPrecipitation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondaryText"
+        android:textSize="@dimen/list_item_font_size"
+        />
+
+    <TextView
+        android:id="@+id/forecastHeat"
+        android:layout_below="@+id/forecastRelwet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/secondaryText"
+        android:textSize="@dimen/list_item_font_size"
+        />
+
 </RelativeLayout>
