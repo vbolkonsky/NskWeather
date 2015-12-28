@@ -6,4 +6,6 @@
     <dimen name="list_item_padding">16dp</dimen>
     <dimen name="list_item_height">88dp</dimen>
     <dimen name="list_item_font_size">16sp</dimen>
+    <dimen name="list_item_avatar_width">40dp</dimen>
+    <dimen name="list_item_avatar_height">40dp</dimen>
 </resources>
