@@ -61,14 +61,15 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ButterKnife.bind(this);
-        setupComponent(App.get(this).component());
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
+        initLibraries();
+        initToolbar();
         showEmptyText();
         initRecyclerView();
+    }
+
+    private void initLibraries() {
+        ButterKnife.bind(this);
+        setupComponent(App.get(this).component());
     }
 
     private void loadData() {
@@ -107,6 +108,11 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL_LIST));
+    }
+
+    private void initToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     @Override
