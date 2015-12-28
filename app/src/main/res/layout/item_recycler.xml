@@ -8,7 +8,6 @@
 
     <ImageView
         android:id="@+id/forecastImage"
-        android:src="@drawable/art_clear"
         android:layout_width="@dimen/list_item_avatar_width"
         android:layout_height="@dimen/list_item_avatar_height"
         android:contentDescription="@string/image"

@@ -3,8 +3,10 @@ package com.example.lehakorshun.nskweather;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.lehakorshun.nskweather.helper.Helper;
 import com.example.lehakorshun.nskweather.model.Forecast;
 
 import java.text.SimpleDateFormat;
@@ -17,6 +19,9 @@ import butterknife.ButterKnife;
 public class ForecastActivity extends AppCompatActivity {
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.US);
+
+    @Bind(R.id.forecastImage)
+    ImageView forecastImage;
 
     @Bind(R.id.forecastDate)
     TextView forecastDate;
@@ -36,6 +41,9 @@ public class ForecastActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Forecast forecast = (Forecast) getIntent().getSerializableExtra("forecast");
+
+        forecastImage.setImageResource(Helper.getImage(forecast.getPhenomena().getCloudiness(),
+                forecast.getPhenomena().getPrecipitation()));
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(forecast.getYear(), forecast.getMonth(), forecast.getDay(),

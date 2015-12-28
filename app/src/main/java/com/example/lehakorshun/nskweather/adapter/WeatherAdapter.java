@@ -6,11 +6,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.lehakorshun.nskweather.ForecastActivity;
 import com.example.lehakorshun.nskweather.R;
+import com.example.lehakorshun.nskweather.helper.Helper;
 import com.example.lehakorshun.nskweather.model.Forecast;
 
 import java.text.SimpleDateFormat;
@@ -47,6 +49,9 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Forecast item = items.get(position);
 
+        holder.forecastImage.setImageResource(Helper.getImage(item.getPhenomena().getCloudiness(),
+                item.getPhenomena().getPrecipitation()));
+
         Calendar calendar = Calendar.getInstance();
         calendar.set(item.getYear(), item.getMonth(), item.getDay(), item.getHour(), 0);
         String date = dateFormat.format(calendar.getTime());
@@ -70,6 +75,9 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
 
         @Bind(R.id.forecastItem)
         LinearLayout forecastItem;
+
+        @Bind(R.id.forecastImage)
+        ImageView forecastImage;
 
         @Bind(R.id.forecastDate)
         TextView forecastDate;

@@ -7,30 +7,30 @@ import java.io.Serializable;
 public class Phenomena implements Serializable{
 
     @Attribute(name = "cloudiness")
-    private long cloudiness;
+    private int cloudiness;
 
     @Attribute(name = "precipitation")
-    private long precipitation;
+    private int precipitation;
 
     @Attribute(name = "rpower")
-    private long rpower;
+    private int rpower;
 
     @Attribute(name = "spower")
-    private long spower;
+    private int spower;
 
-    public long getCloudiness() {
+    public int getCloudiness() {
         return cloudiness;
     }
 
-    public long getPrecipitation() {
+    public int getPrecipitation() {
         return precipitation;
     }
 
-    public long getRpower() {
+    public int getRpower() {
         return rpower;
     }
 
-    public long getSpower() {
+    public int getSpower() {
         return spower;
     }
 }
