@@ -1,11 +1,15 @@
 package com.example.lehakorshun.nskweather.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.lehakorshun.nskweather.ForecastActivity;
 import com.example.lehakorshun.nskweather.R;
 import com.example.lehakorshun.nskweather.model.Forecast;
 
@@ -16,11 +20,17 @@ import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHolder> {
 
     private List<Forecast> items;
+    private Context context;
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.US);
+
+    public WeatherAdapter(Context context) {
+        this.context = context;
+    }
 
     public void setItems(List<Forecast> items) {
         this.items = items;
@@ -42,11 +52,11 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         String date = dateFormat.format(calendar.getTime());
         holder.forecastDate.setText(date);
 
-        String temperature = "Max: " + item.getTemperature().getMax()
+        String temperature = "Temperature: Max: " + item.getTemperature().getMax()
                 + "Min: " + item.getTemperature().getMin();
         holder.forecastTemperature.setText(temperature);
 
-        String wind = "Max: " + item.getWind().getMax()
+        String wind = "Wind: Max: " + item.getWind().getMax()
                 + "Min: " + item.getWind().getMin();
         holder.forecastWind.setText(wind);
     }
@@ -56,7 +66,10 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         return items.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        @Bind(R.id.forecastItem)
+        LinearLayout forecastItem;
 
         @Bind(R.id.forecastDate)
         TextView forecastDate;
@@ -66,6 +79,12 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
 
         @Bind(R.id.forecastWind)
         TextView forecastWind;
+
+        @OnClick(R.id.forecastItem)
+        public void onClick(View v) {
+            Intent intent = new Intent(context, ForecastActivity.class);
+            context.startActivity(intent);
+        }
 
         public ViewHolder(View itemView) {
             super(itemView);
