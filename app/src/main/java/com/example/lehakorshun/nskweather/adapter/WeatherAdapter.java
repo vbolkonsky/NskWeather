@@ -49,8 +49,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Forecast item = items.get(position);
 
-        holder.forecastImage.setImageResource(Helper.getImage(item.getPhenomena().getCloudiness(),
-                item.getPhenomena().getPrecipitation()));
+        holder.forecastImage.setImageResource(Helper.getImage(item.getPhenomena().getCloudiness()));
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(item.getYear(), item.getMonth(), item.getDay(), item.getHour(), 0);

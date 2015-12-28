@@ -42,8 +42,7 @@ public class ForecastActivity extends AppCompatActivity {
 
         Forecast forecast = (Forecast) getIntent().getSerializableExtra("forecast");
 
-        forecastImage.setImageResource(Helper.getImage(forecast.getPhenomena().getCloudiness(),
-                forecast.getPhenomena().getPrecipitation()));
+        forecastImage.setImageResource(Helper.getImage(forecast.getPhenomena().getCloudiness()));
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(forecast.getYear(), forecast.getMonth(), forecast.getDay(),

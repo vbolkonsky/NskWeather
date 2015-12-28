@@ -4,8 +4,8 @@ import com.example.lehakorshun.nskweather.R;
 
 public class Helper {
 
-    public static int getImage(int clouiness, int precipitation) {
-        switch (clouiness) {
+    public static int getImage(int cloudiness) {
+        switch (cloudiness) {
             case 0:
                 return R.drawable.art_clear;
             case 1:
