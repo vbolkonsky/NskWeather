@@ -56,11 +56,7 @@ public class ForecastActivity extends AppCompatActivity {
 
         setForecastImage(forecast.getPhenomena().getCloudiness());
         setForecastDate(forecast.getYear(), forecast.getMonth(), forecast.getDay(), forecast.getHour());
-
-
-        String temperature = "Temperature: Max: " + forecast.getTemperature().getMax()
-                + " Min: " + forecast.getTemperature().getMin();
-        forecastTemperature.setText(temperature);
+        setForecastTemperature(forecast.getTemperature().getMax(), forecast.getTemperature().getMin());
 
         String wind = "Wind: Max: " + forecast.getWind().getMax()
                 + " Min: " + forecast.getWind().getMin() + " Direction: " +
@@ -79,8 +75,10 @@ public class ForecastActivity extends AppCompatActivity {
         forecastDate.setText(date);
     }
 
-    private void setForecastTemperature() {
-
+    private void setForecastTemperature(int max, int min) {
+        String temperature = "Temperature: Max: " + max
+                + " Min: " + min;
+        forecastTemperature.setText(temperature);
     }
 
     private void setForecastWind() {

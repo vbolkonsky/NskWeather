@@ -7,16 +7,16 @@ import java.io.Serializable;
 public class Temperature implements Serializable{
 
     @Attribute(name = "max")
-    private long max;
+    private int max;
 
     @Attribute(name = "min")
-    private long min;
+    private int min;
 
-    public long getMax() {
+    public int getMax() {
         return max;
     }
 
-    public long getMin() {
+    public int getMin() {
         return min;
     }
 }
