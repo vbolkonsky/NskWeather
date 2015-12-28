@@ -60,6 +60,7 @@ public class ForecastActivity extends AppCompatActivity {
         setForecastWind(forecast.getWind().getMax(), forecast.getWind().getMin(),
                 forecast.getWind().getDirection());
         setForecastPressure(forecast.getPressure().getMax(), forecast.getPressure().getMin());
+        setForecastPrecipitation();
         setForecastRelwet(forecast.getRelwet().getMax(), forecast.getRelwet().getMin());
         setForecastHeat(forecast.getHeat().getMax(), forecast.getHeat().getMin());
     }
@@ -95,19 +96,19 @@ public class ForecastActivity extends AppCompatActivity {
     }
 
     private void setForecastPrecipitation() {
-
+        forecastPrecipitation.setText("precipitation");
     }
 
     private void setForecastRelwet(int max, int min) {
         String pressure = "Relwet: Max: " + max
                 + " Min: " + min;
-        forecastPressure.setText(pressure);
+        forecastRelwet.setText(pressure);
     }
 
     private void setForecastHeat(int max, int min) {
         String pressure = "Heat: Max: " + max
                 + " Min: " + min;
-        forecastPressure.setText(pressure);
+        forecastHeat.setText(pressure);
     }
 
 }
