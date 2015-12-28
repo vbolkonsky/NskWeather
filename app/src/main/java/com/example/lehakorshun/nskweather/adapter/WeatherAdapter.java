@@ -53,11 +53,11 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         holder.forecastDate.setText(date);
 
         String temperature = "Temperature: Max: " + item.getTemperature().getMax()
-                + "Min: " + item.getTemperature().getMin();
+                + " Min: " + item.getTemperature().getMin();
         holder.forecastTemperature.setText(temperature);
 
         String wind = "Wind: Max: " + item.getWind().getMax()
-                + "Min: " + item.getWind().getMin();
+                + " Min: " + item.getWind().getMin();
         holder.forecastWind.setText(wind);
     }
 
@@ -81,7 +81,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         TextView forecastWind;
 
         @OnClick(R.id.forecastItem)
-        public void onClick(View v) {
+        public void onClick() {
             Intent intent = new Intent(context, ForecastActivity.class);
             context.startActivity(intent);
         }

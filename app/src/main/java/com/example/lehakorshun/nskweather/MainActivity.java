@@ -7,19 +7,21 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.lehakorshun.nskweather.ItemDecoration.DividerItemDecoration;
 import com.example.lehakorshun.nskweather.adapter.WeatherAdapter;
+import com.example.lehakorshun.nskweather.component.AppComponent;
+import com.example.lehakorshun.nskweather.component.DaggerMainComponent;
+import com.example.lehakorshun.nskweather.component.MainComponent;
 import com.example.lehakorshun.nskweather.interfaces.RestBackendInterface;
 import com.example.lehakorshun.nskweather.model.Mmweather;
-import com.example.lehakorshun.nskweather.modules.RetrofitModule;
-import com.example.lehakorshun.nskweather.component.DaggerRetrofitComponent;
-import com.example.lehakorshun.nskweather.component.RetrofitComponent;
 import com.example.lehakorshun.nskweather.model.Town;
+import com.example.lehakorshun.nskweather.modules.MainModule;
+
+import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -30,7 +32,6 @@ import retrofit.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
 
-    AppCompatActivity context;
     Town town;
 
     @Bind(R.id.emptyText)
@@ -42,22 +43,26 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.recycler)
     RecyclerView recyclerView;
 
-    WeatherAdapter weatherAdapter = new WeatherAdapter(this);
+    @Inject WeatherAdapter weatherAdapter;
+
+    @Inject Retrofit retrofit;
+    //WeatherAdapter weatherAdapter = new WeatherAdapter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context = this;
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+        setupComponent(App.get(this).component());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL_LIST));
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -76,10 +81,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
 
-        RetrofitComponent retrofitComponent = DaggerRetrofitComponent.builder()
-                .retrofitModule(new RetrofitModule()).build();
+        /*MainComponent mainComponent = DaggerMainComponent.builder()
+                .mainModule(new MainModule()).build();
 
-        Retrofit retrofit = retrofitComponent.provideRetrofit();
+        Retrofit retrofit = mainComponent.provideRetrofit();*/
 
         RestBackendInterface restBackendInterface = retrofit.create(RestBackendInterface.class);
         Call<Mmweather> call = restBackendInterface.getWeather();
@@ -101,5 +106,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    protected void setupComponent(AppComponent appComponent) {
+        DaggerMainComponent.builder()
+                .appComponent(appComponent)
+                .mainModule(new MainModule())
+                .build()
+                .inject(this);
     }
 }
