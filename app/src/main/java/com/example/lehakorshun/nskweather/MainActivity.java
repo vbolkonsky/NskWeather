@@ -49,13 +49,17 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
                 showItems();
             } else {
                 showEmptyText();
-                showFailureDialog();
+                showFailureDialog(getString(R.string.Error),
+                        getString(R.string.Server_error));
             }
         }
 
         @Override
         public void onFailure(Throwable t) {
-
+            showEmptyText();
+            showFailureDialog(getString(R.string.Error),
+                    getString(R.string.check_internet_connection));
+            Log.e("Weather", "Error on parse : "  + t.getMessage());
         }
     };
 
@@ -123,10 +127,10 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         setSupportActionBar(toolbar);
     }
 
-    private void showFailureDialog() {
+    private void showFailureDialog(String title, String msg) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                .setMessage(getString(R.string.Server_error))
-                .setTitle(getString(R.string.Error))
+                .setMessage(msg)
+                .setTitle(title)
                 .setPositiveButton(getString(R.string.OK), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

@@ -18,4 +18,5 @@
     <string name="Server_error">Server error</string>
     <string name="Error">Error</string>
     <string name="OK">OK</string>
+    <string name="check_internet_connection">Check you internet connection</string>
 </resources>

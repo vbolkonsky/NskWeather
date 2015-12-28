@@ -4,6 +4,9 @@ import android.content.Context;
 
 import com.example.lehakorshun.nskweather.adapter.WeatherAdapter;
 import com.example.lehakorshun.nskweather.utils.Constant;
+import com.squareup.okhttp.OkHttpClient;
+
+import java.util.concurrent.TimeUnit;
 
 import dagger.Module;
 import dagger.Provides;
@@ -22,8 +25,13 @@ public class MainModule {
     @Provides
     public Retrofit provideRetrofit() {
 
+        OkHttpClient okHttpClient = new OkHttpClient();
+        okHttpClient.setReadTimeout(10, TimeUnit.SECONDS);
+        okHttpClient.setConnectTimeout(10, TimeUnit.SECONDS);
+
         return new  Retrofit.Builder()
                 .baseUrl(Constant.URL)
+                .client(okHttpClient)
                 .addConverterFactory(SimpleXmlConverterFactory.create())
                 .build();
     }
