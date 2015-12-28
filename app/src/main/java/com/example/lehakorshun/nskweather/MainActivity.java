@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadData() {
 
         emptyText.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
 
         RetrofitComponent retrofitComponent = DaggerRetrofitComponent.builder()
