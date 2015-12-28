@@ -39,7 +39,7 @@ import retrofit.Retrofit;
 public class MainActivity extends AppCompatActivity implements MainViewInterface{
 
     Town town;
-    Callback<Mmweather> retroditCallback = new Callback<Mmweather>() {
+    Callback<Mmweather> retrofitCallback = new Callback<Mmweather>() {
         @Override
         public void onResponse(Response<Mmweather> response, Retrofit retrofit) {
             if (response.body() != null) {
@@ -50,11 +50,6 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
             } else {
                 showEmptyText();
                 showFailureDialog();
-                try {
-                    Log.d("111", "error: " + response.errorBody().string());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
         }
 
@@ -105,8 +100,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         showProgress();
         RestBackendInterface restBackendInterface = retrofit.create(RestBackendInterface.class);
         Call<Mmweather> call = restBackendInterface.getWeather();
-        call.enqueue(retroditCallback);
-
+        call.enqueue(retrofitCallback);
     }
 
     protected void setupComponent(AppComponent appComponent) {
