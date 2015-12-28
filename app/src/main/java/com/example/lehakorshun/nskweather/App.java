@@ -10,10 +10,17 @@ import com.example.lehakorshun.nskweather.modules.AppModule;
 public class App extends Application {
 
     private AppComponent component;
+    private static Context context;
 
-    @Override public void onCreate() {
+    @Override
+    public void onCreate() {
         super.onCreate();
+        context = this;
         setupGraph();
+    }
+
+    public static Context getContext() {
+        return context;
     }
 
     private void setupGraph() {

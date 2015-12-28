@@ -4,4 +4,15 @@
     <string name="empty_data">Empty data</string>
     <string name="title_activity_forecast">ForecastActivity</string>
     <string name="image">image</string>
+    <string name="North">North</string>
+    <string name="Northeast">Northeast</string>
+    <string name="East">East</string>
+    <string name="Southeast">Southeast</string>
+    <string name="South">South</string>
+    <string name="Southwest">Southwest</string>
+    <string name="West">West</string>
+    <string name="Northwest">Northwest</string>
+    <string name="Not_precipitation">Not precipitaion</string>
+    <string name="Maybe_precipitation">Maybe precipitaion</string>
+    <string name="Precipitation">Precipitaion</string>
 </resources>
