@@ -55,12 +55,8 @@ public class ForecastActivity extends AppCompatActivity {
         Forecast forecast = (Forecast) getIntent().getSerializableExtra("forecast");
 
         setForecastImage(forecast.getPhenomena().getCloudiness());
+        setForecastDate(forecast.getYear(), forecast.getMonth(), forecast.getDay(), forecast.getHour());
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(forecast.getYear(), forecast.getMonth(), forecast.getDay(),
-                forecast.getHour(), 0);
-        String date = dateFormat.format(calendar.getTime());
-        forecastDate.setText(date);
 
         String temperature = "Temperature: Max: " + forecast.getTemperature().getMax()
                 + " Min: " + forecast.getTemperature().getMin();
@@ -76,8 +72,11 @@ public class ForecastActivity extends AppCompatActivity {
         forecastImage.setImageResource(Helper.getImage(cloudiness));
     }
 
-    private void setForecastDate() {
-
+    private void setForecastDate(int year, int month, int day, int hour) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day, hour, 0);
+        String date = dateFormat.format(calendar.getTime());
+        forecastDate.setText(date);
     }
 
     private void setForecastTemperature() {
