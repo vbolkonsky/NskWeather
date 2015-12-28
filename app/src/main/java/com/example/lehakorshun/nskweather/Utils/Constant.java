@@ -2,6 +2,6 @@ package com.example.lehakorshun.nskweather.utils;
 
 public interface Constant {
 
-    public String URL = "http://informer.gismeteo.ru";
-
+    String URL = "http://informer.gismeteo.ru";
+    String PATH = "/xml/29634_1.xml";
 }

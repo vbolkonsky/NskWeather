@@ -52,9 +52,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         setForecastImage(holder, item.getPhenomena().getCloudiness());
         setForecastDate(holder, item.getYear(), item.getMonth(), item.getDay(), item.getHour());
         setForecastTemperature(holder, item.getTemperature().getMax(), item.getTemperature().getMin());
-        setForecastWind(holder, item.getWind().getMax(), item.getWind().getMin(),
-                item.getWind().getDirection());
-
+        setForecastWind(holder, item.getWind().getMax(), item.getWind().getMin());
     }
 
     @Override
@@ -109,7 +107,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         holder.forecastTemperature.setText(temperature);
     }
 
-    private void setForecastWind(ViewHolder holder, int max, int min, int direction) {
+    private void setForecastWind(ViewHolder holder, int max, int min) {
         String wind = "Wind: Max: " + max
                 + " Min: " + min;
         holder.forecastWind.setText(wind);

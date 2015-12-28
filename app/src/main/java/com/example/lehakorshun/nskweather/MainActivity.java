@@ -15,6 +15,7 @@ import com.example.lehakorshun.nskweather.ItemDecoration.DividerItemDecoration;
 import com.example.lehakorshun.nskweather.adapter.WeatherAdapter;
 import com.example.lehakorshun.nskweather.component.AppComponent;
 import com.example.lehakorshun.nskweather.component.DaggerMainComponent;
+import com.example.lehakorshun.nskweather.interfaces.MainViewInterface;
 import com.example.lehakorshun.nskweather.interfaces.RestBackendInterface;
 import com.example.lehakorshun.nskweather.model.Mmweather;
 import com.example.lehakorshun.nskweather.model.Town;
@@ -24,12 +25,13 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainViewInterface{
 
     Town town;
 
@@ -41,6 +43,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.recycler)
     RecyclerView recyclerView;
+
+    @Bind(R.id.fab)
+    FloatingActionButton fab;
+
+    @OnClick(R.id.fab)
+    public void onClick() {
+        loadData();
+    }
 
     @Inject WeatherAdapter weatherAdapter;
 
@@ -57,28 +67,12 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(this,
-                DividerItemDecoration.VERTICAL_LIST));
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                loadData();
-
-            }
-        });
+        showEmptyText();
+        initRecyclerView();
     }
 
     private void loadData() {
-
-        emptyText.setVisibility(View.GONE);
-        recyclerView.setVisibility(View.GONE);
-        progressBar.setVisibility(View.VISIBLE);
-
+        showProgress();
         RestBackendInterface restBackendInterface = retrofit.create(RestBackendInterface.class);
         Call<Mmweather> call = restBackendInterface.getWeather();
         call.enqueue(new Callback<Mmweather>() {
@@ -89,8 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 weatherAdapter.setItems(town.getForecasts());
                 recyclerView.setAdapter(weatherAdapter);
 
-                recyclerView.setVisibility(View.VISIBLE);
-                progressBar.setVisibility(View.GONE);
+                showItems();
             }
 
             @Override
@@ -107,5 +100,33 @@ public class MainActivity extends AppCompatActivity {
                 .mainModule(new MainModule(this))
                 .build()
                 .inject(this);
+    }
+
+    private void initRecyclerView() {
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL_LIST));
+    }
+
+    @Override
+    public void showProgress() {
+        emptyText.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showItems() {
+        emptyText.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showEmptyText() {
+        emptyText.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
+        progressBar.setVisibility(View.GONE);
     }
 }
