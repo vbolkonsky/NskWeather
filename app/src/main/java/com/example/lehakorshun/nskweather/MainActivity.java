@@ -34,6 +34,23 @@ import retrofit.Retrofit;
 public class MainActivity extends AppCompatActivity implements MainViewInterface{
 
     Town town;
+    Callback<Mmweather> retroditCallback = new Callback<Mmweather>() {
+        @Override
+        public void onResponse(Response<Mmweather> response, Retrofit retrofit) {
+            town = response.body().getTown();
+
+            weatherAdapter.setItems(town.getForecasts());
+            recyclerView.setAdapter(weatherAdapter);
+
+            showItems();
+        }
+
+        @Override
+        public void onFailure(Throwable t) {
+            showEmptyText();
+
+        }
+    };
 
     @Bind(R.id.emptyText)
     TextView emptyText;
@@ -76,22 +93,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         showProgress();
         RestBackendInterface restBackendInterface = retrofit.create(RestBackendInterface.class);
         Call<Mmweather> call = restBackendInterface.getWeather();
-        call.enqueue(new Callback<Mmweather>() {
-            @Override
-            public void onResponse(Response<Mmweather> response, Retrofit retrofit) {
-                town = response.body().getTown();
-
-                weatherAdapter.setItems(town.getForecasts());
-                recyclerView.setAdapter(weatherAdapter);
-
-                showItems();
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-
-            }
-        });
+        call.enqueue(retroditCallback);
 
     }
 
@@ -113,6 +115,10 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     private void initToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+    }
+
+    private void showFailureDialog() {
+
     }
 
     @Override
