@@ -13,6 +13,10 @@ public class Helper {
     private static final String WEST_DIRECTION = "West";
     private static final String NORTHWEST_DIRECTION = "Northwest";
 
+    private static final String NOT_PRECIPITATION = "Not precipitaion";
+    private static final String MAYBE_PRECIPITATION = "Maybe precipitaion";
+    private static final String PRECIPITATION = "Precipitaion";
+
     public static int getImage(int cloudiness) {
         switch (cloudiness) {
             case 0:
@@ -46,6 +50,16 @@ public class Helper {
                 return NORTHWEST_DIRECTION;
             default:
                 return NORTH_DIRECTION;
+        }
+    }
+
+    public static String getPrecipitation(int precipitation) {
+        if (precipitation > 0 && precipitation <= 3) {
+            return MAYBE_PRECIPITATION;
+        } else if (precipitation > 3) {
+            return PRECIPITATION;
+        } else {
+            return NOT_PRECIPITATION;
         }
     }
 }
