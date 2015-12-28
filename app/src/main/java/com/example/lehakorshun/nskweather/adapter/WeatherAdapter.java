@@ -111,8 +111,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
 
     private void setForecastWind(ViewHolder holder, int max, int min, int direction) {
         String wind = "Wind: Max: " + max
-                + " Min: " + min + " Direction: " +
-                Helper.getWindDirection(direction);
+                + " Min: " + min;
         holder.forecastWind.setText(wind);
     }
 }
