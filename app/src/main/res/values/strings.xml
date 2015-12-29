@@ -2,4 +2,21 @@
     <string name="app_name">NskWeather</string>
     <string name="action_settings">Settings</string>
     <string name="empty_data">Empty data</string>
+    <string name="title_activity_forecast">ForecastActivity</string>
+    <string name="image">image</string>
+    <string name="North">North</string>
+    <string name="Northeast">Northeast</string>
+    <string name="East">East</string>
+    <string name="Southeast">Southeast</string>
+    <string name="South">South</string>
+    <string name="Southwest">Southwest</string>
+    <string name="West">West</string>
+    <string name="Northwest">Northwest</string>
+    <string name="Not_precipitation">Not precipitaion</string>
+    <string name="Maybe_precipitation">Maybe precipitaion</string>
+    <string name="Precipitation">Precipitaion</string>
+    <string name="Server_error">Server error</string>
+    <string name="Error">Error</string>
+    <string name="OK">OK</string>
+    <string name="check_internet_connection">Check you internet connection</string>
 </resources>

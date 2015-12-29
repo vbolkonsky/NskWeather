@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/forecastItem"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_item_height"
+    >
+
+    <ImageView
+        android:id="@+id/forecastImage"
+        android:layout_width="@dimen/list_item_avatar_width"
+        android:layout_height="@dimen/list_item_avatar_height"
+        android:contentDescription="@string/image"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center_vertical"
+        />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingLeft="@dimen/list_item_padding"
+        android:paddingStart="@dimen/list_item_padding"
+        >
+
+        <TextView
+            android:id="@+id/forecastDate"
+            android:textSize="@dimen/list_item_font_size"
+            android:textColor="@color/primaryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/forecastTemperature"
+            android:textSize="@dimen/list_item_font_size"
+            android:textColor="@color/secondaryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/forecastWind"
+            android:textSize="@dimen/list_item_font_size"
+            android:textColor="@color/secondaryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>
