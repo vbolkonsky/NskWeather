@@ -80,19 +80,42 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
         loadData();
     }
 
-    @Inject WeatherAdapter weatherAdapter;
+    @Inject
+    WeatherAdapter weatherAdapter;
 
-    @Inject Retrofit retrofit;
+    @Inject
+    Retrofit retrofit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initLibraries();
         initToolbar();
-        showEmptyText();
         initRecyclerView();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putSerializable("town", town);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        town = (Town) savedInstanceState.getSerializable("town");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (town != null) {
+            weatherAdapter.setItems(town.getForecasts());
+            recyclerView.setAdapter(weatherAdapter);
+            showItems();
+        }
     }
 
     private void initLibraries() {
