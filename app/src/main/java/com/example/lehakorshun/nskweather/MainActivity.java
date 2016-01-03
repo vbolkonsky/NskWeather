@@ -23,6 +23,7 @@ import com.example.lehakorshun.nskweather.interfaces.RestBackendInterface;
 import com.example.lehakorshun.nskweather.model.Mmweather;
 import com.example.lehakorshun.nskweather.model.Town;
 import com.example.lehakorshun.nskweather.modules.MainModule;
+import com.squareup.okhttp.OkHttpClient;
 
 import javax.inject.Inject;
 
