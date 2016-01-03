@@ -81,6 +81,7 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.ViewHold
         public void onClick() {
             Intent intent = new Intent(context, ForecastActivity.class);
             intent.putExtra("forecast", items.get(getAdapterPosition()));
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         }
 
