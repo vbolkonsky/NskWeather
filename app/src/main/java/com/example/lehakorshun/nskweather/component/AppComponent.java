@@ -3,8 +3,7 @@ package com.example.lehakorshun.nskweather.component;
 import android.app.Application;
 
 import com.example.lehakorshun.nskweather.modules.AppModule;
-
-import javax.inject.Singleton;
+import com.example.lehakorshun.nskweather.scopes.AppScope;
 
 import dagger.Component;
 
@@ -13,7 +12,7 @@ import dagger.Component;
                 AppModule.class,
         }
 )
-@Singleton
+@AppScope
 public interface AppComponent {
     void inject(Application app);
 }

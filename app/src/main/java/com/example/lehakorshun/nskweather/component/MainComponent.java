@@ -1,6 +1,6 @@
 package com.example.lehakorshun.nskweather.component;
 
-import com.example.lehakorshun.nskweather.ActivityScope;
+import com.example.lehakorshun.nskweather.scopes.ActivityScope;
 import com.example.lehakorshun.nskweather.MainActivity;
 import com.example.lehakorshun.nskweather.modules.MainModule;
 

@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.lehakorshun.nskweather.ItemDecoration.DividerItemDecoration;
+import com.example.lehakorshun.nskweather.itemDecoration.DividerItemDecoration;
 import com.example.lehakorshun.nskweather.adapter.WeatherAdapter;
 import com.example.lehakorshun.nskweather.component.AppComponent;
 import com.example.lehakorshun.nskweather.component.DaggerMainComponent;
@@ -23,8 +23,6 @@ import com.example.lehakorshun.nskweather.interfaces.RestBackendInterface;
 import com.example.lehakorshun.nskweather.model.Mmweather;
 import com.example.lehakorshun.nskweather.model.Town;
 import com.example.lehakorshun.nskweather.modules.MainModule;
-
-import java.io.IOException;
 
 import javax.inject.Inject;
 
@@ -133,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements MainViewInterface
     protected void setupComponent(AppComponent appComponent) {
         DaggerMainComponent.builder()
                 .appComponent(appComponent)
-                .mainModule(new MainModule(this))
+                .mainModule(new MainModule())
                 .build()
                 .inject(this);
     }
