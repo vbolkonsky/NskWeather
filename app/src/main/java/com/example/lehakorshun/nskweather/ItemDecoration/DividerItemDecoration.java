@@ -1,4 +1,4 @@
-package com.example.lehakorshun.nskweather.itemDecoration;
+package com.example.lehakorshun.nskweather.itemdecoration;
 
 import android.content.Context;
 import android.content.res.TypedArray;

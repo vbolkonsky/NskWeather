@@ -1,6 +1,7 @@
 package com.example.lehakorshun.nskweather.modules;
 
-import com.example.lehakorshun.nskweather.App;
+import android.app.Application;
+
 import com.example.lehakorshun.nskweather.adapter.WeatherAdapter;
 import com.example.lehakorshun.nskweather.scopes.ActivityScope;
 import com.example.lehakorshun.nskweather.utils.Constant;
@@ -27,7 +28,7 @@ public class MainModule {
 
     @Provides
     @ActivityScope
-    public WeatherAdapter provideWeatherAdapter(App app) {
+    public WeatherAdapter provideWeatherAdapter(Application app) {
         return new WeatherAdapter(app);
     }
 }

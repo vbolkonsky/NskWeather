@@ -7,6 +7,8 @@ import com.squareup.okhttp.OkHttpClient;
 
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -17,6 +19,7 @@ public class AppModule {
 
     private OkHttpClient okHttpClient;
 
+    @Inject
     public AppModule(Application app) {
         this.app = app;
 
