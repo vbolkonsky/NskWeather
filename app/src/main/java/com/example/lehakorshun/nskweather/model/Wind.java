@@ -16,11 +16,11 @@ public class Wind implements Serializable{
     private int direction;
 
     public int getMax() {
-        return max;
+        return Math.max(max, min);
     }
 
     public int getMin() {
-        return min;
+        return Math.min(min, max);
     }
 
     public int getDirection() {

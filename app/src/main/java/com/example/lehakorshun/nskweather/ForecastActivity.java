@@ -75,7 +75,7 @@ public class ForecastActivity extends AppCompatActivity {
 
     private void setForecastDate(int year, int month, int day, int hour) {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, day, hour, 0);
+        calendar.set(year, month - 1, day, hour, 0);
         String date = dateFormat.format(calendar.getTime());
         forecastDate.setText(date);
     }

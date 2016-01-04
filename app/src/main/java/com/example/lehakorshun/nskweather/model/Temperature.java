@@ -13,10 +13,10 @@ public class Temperature implements Serializable{
     private int min;
 
     public int getMax() {
-        return max;
+        return Math.max(max, min);
     }
 
     public int getMin() {
-        return min;
+        return Math.min(min, max);
     }
 }
