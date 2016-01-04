@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.lehakorshun.nskweather.itemDecoration.DividerItemDecoration;
+import com.example.lehakorshun.nskweather.itemdecoration.DividerItemDecoration;
 import com.example.lehakorshun.nskweather.adapter.WeatherAdapter;
 import com.example.lehakorshun.nskweather.component.AppComponent;
 import com.example.lehakorshun.nskweather.component.DaggerMainComponent;
